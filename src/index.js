@@ -186,6 +186,7 @@ export default {
     setDebug(env.DEBUG);
 
     const url = new URL(request.url);
+    if (url.pathname === "/robots.txt") return new Response("User-agent: *\nDisallow: /\n", { headers: { "Content-Type": "text/plain" } });
     const method = request.method;
     const path = url.pathname;
 
